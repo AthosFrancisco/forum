@@ -2,6 +2,10 @@
 
 class Usuario {
     
+    public function __construct() {
+        
+    }
+
     private $id;
     private $nome;
     private $email;
@@ -28,7 +32,7 @@ class Usuario {
         return $this->tipo;
     }
 
-    public function setId(int $id) {
+    public function setId(int$id) {
         $this->id = $id;
     }
 

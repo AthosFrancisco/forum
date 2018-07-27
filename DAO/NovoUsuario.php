@@ -1,6 +1,7 @@
 <?php
 
 require 'Conexao.php';
+require 'model/Usuario.php';
 
 class NovoUsuario{
     
@@ -18,8 +19,14 @@ class NovoUsuario{
         
         $sql = $pdo->query($sql);
         
+        $usuario = new Usuario();
         if($sql->rowCount() > 0){
-            $usuario = $sql->fetch();
+            $result = $sql->fetch();
+            $usuario::setId(intval($result['id']));
+            $usuario::setNome($result['nome']);
+            $usuario::setEmail($result['email']);
+            $usuario::setSenha("");
+            $usuario::setTipo($result['tipo']);
         }
         
         return $usuario;
