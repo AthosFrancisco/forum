@@ -1,5 +1,5 @@
 <?php
-    require 'DAO/NovoUsuario.php';
+    require_once 'DAO/NovoUsuario.php';
     
     if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha'])){
         $algumVazio = false;
@@ -22,6 +22,7 @@
             $email = addslashes($_POST['email']);
             $senha = addslashes($_POST['senha']);
             $usuario = NovoUsuario::novo($nome, $email, $senha);
+            
         }
     }
 ?>
@@ -32,7 +33,7 @@
         <title>Login</title>
     </head>
     <body>
-        <h1>Login</h1>
+        <h1>Cadastro</h1>
         <form method="POST">
             <table>
                 <tr>

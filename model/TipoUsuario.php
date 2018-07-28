@@ -1,6 +1,9 @@
 <?php
 
+require_once 'SplEnum.php';
+
 class TipoUsuario extends SplEnum{
+
     
     const __default = self::Comum;
     

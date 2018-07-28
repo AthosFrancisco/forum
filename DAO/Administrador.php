@@ -1,7 +1,10 @@
 <?php
 
-class Administrador implements UsuarioDAO{
+class Administrador extends UsuarioDAO{
     
+    public function Administrador($usuario) {
+        $this->usuario = $usuario;
+    }
     
     public function apagarPergunta(int $idPergunta) {
         

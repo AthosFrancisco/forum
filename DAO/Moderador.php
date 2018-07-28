@@ -1,8 +1,11 @@
 <?php
 
-class Moderador implements UsuarioDAO{
+class Moderador extends UsuarioDAO{
     
-    
+    public function Moderador($usuario) {
+        $this->usuario = $usuario;
+    }
+
     public function apagarPergunta(int $idPergunta) {
         
     }

@@ -1,17 +1,50 @@
+<?php
+    
+    require_once 'DAO/CriarUsuarioDAO.php';
+    
+    if(isset($_POST['login']) && isset($_POST['senha'])){
+        $algumVazio = false;
+        
+        if(empty($_POST['login']) == true){
+            echo '<span style="color: red;">Falta o nome</span>';
+            $algumVazio = true;
+        }
+        if(empty($_POST['senha']) == true){
+            echo '<span style="color: red;">Falta o E-mail</span>';
+            $algumVazio = true;
+        }
+        
+        if(!$algumVazio){
+            $login = addslashes($_POST['login']);
+            $senha = addslashes($_POST['senha']);
+            $usuarioDAO = CriarUsuarioDao::getUsuarioDAO($login, $senha);
+            
+        }
+    }
+?>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <meta charset="UTF-8">
         <title></title>
     </head>
     <body>
-        <?php
-            
-        ?>
+        <h1>Login</h1>
+        <form method="POST">
+            <table>
+                <tr>
+                    <td><label for="login">Login:</label></td>
+                    <td><input type="text" name="login" id="login"/></td>
+                </tr>
+                <tr>
+                    <td><label for="senha">Senha:</label></td>
+                    <td><input type="password" name="senha" id="senha"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Enviar"/></td>
+                </tr>
+            </table>
+        </form>
     </body>
 </html>

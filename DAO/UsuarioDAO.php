@@ -1,18 +1,27 @@
 <?php
 
-interface UsuarioDAO {
+require_once 'Conexao.php';
+require_once 'model/Usuario.php';
+
+abstract class UsuarioDAO {
     
-    public function criarPergunta(Pergunta $pergunta);
+    protected $usuario;
     
-    public function criarResposta(Resposta $resposta);
+    public function getUsuario(): Usuario{
+        return $this->usuario;
+    }
+
+    public abstract function criarPergunta(Pergunta $pergunta);
     
-    public function apagarPergunta(int $idPergunta);
+    public abstract function criarResposta(Resposta $resposta);
     
-    public function apagarResposta(int $idResposta);
+    public abstract function apagarPergunta(int $idPergunta);
     
-    public function listarPerguntas();
+    public abstract function apagarResposta(int $idResposta);
     
-    public function listarRespostas();
+    public abstract function listarPerguntas();
     
-    public function listarPerguntasProprias();
+    public abstract function listarRespostas();
+    
+    public abstract function listarPerguntasProprias();
 }

@@ -1,12 +1,8 @@
 <?php
 
-require 'Conexao.php';
-
-class Comum implements UsuarioDAO{
+class Comum extends UsuarioDAO{
     
-    private $usuario;
-
-    public function __construct(Usuario $usuario) {
+    public function Comum($usuario) {
         $this->usuario = $usuario;
     }
 
