@@ -3,7 +3,7 @@
 class Moderador extends UsuarioDAO{
     
     public function Moderador($usuario) {
-        $this->usuario = $usuario;
+        parent::__construct($usuario);
     }
 
     public function apagarPergunta(int $idPergunta) {

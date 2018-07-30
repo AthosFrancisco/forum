@@ -3,7 +3,7 @@
 class Administrador extends UsuarioDAO{
     
     public function Administrador($usuario) {
-        $this->usuario = $usuario;
+        parent::__construct($usuario);
     }
     
     public function apagarPergunta(int $idPergunta) {

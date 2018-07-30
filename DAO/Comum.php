@@ -3,7 +3,7 @@
 class Comum extends UsuarioDAO{
     
     public function Comum($usuario) {
-        $this->usuario = $usuario;
+        parent::__construct($usuario);
     }
 
     

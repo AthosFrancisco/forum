@@ -6,11 +6,11 @@
         $algumVazio = false;
         
         if(empty($_POST['login']) == true){
-            echo '<span style="color: red;">Falta o nome</span>';
+            echo '<span style="color: red;">Falta o login</span>';
             $algumVazio = true;
         }
         if(empty($_POST['senha']) == true){
-            echo '<span style="color: red;">Falta o E-mail</span>';
+            echo '<span style="color: red;">Falta a senha</span>';
             $algumVazio = true;
         }
         
@@ -19,6 +19,13 @@
             $senha = addslashes($_POST['senha']);
             $usuarioDAO = CriarUsuarioDao::getUsuarioDAO($login, $senha);
             
+            if($usuarioDAO == null){
+                echo "Usuário ou senha incorreto";
+            }else{
+                session_start();
+                $_SESSION["usuario"] = $usuarioDAO;
+                header("Location: index.php");
+            }
         }
     }
 ?>

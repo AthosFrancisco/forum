@@ -9,7 +9,7 @@ require_once 'model/Usuario.php';
 
 class CriarUsuarioDAO{
     
-    public static function getUsuarioDAO($login, $senha): UsuarioDAO{
+    public static function getUsuarioDAO($login, $senha){
         
         $pdo = Conexao::getConexao();
         
@@ -17,10 +17,13 @@ class CriarUsuarioDAO{
         
         $sql = $pdo->query($sql);
         
+        $usuario = null;
         if ($sql->rowCount() > 0){
             $sql = $sql->fetch();
             
             $usuario = new Usuario($sql['id'], $sql['nome'], $sql['email'], "", $sql['tipo']);
+        } else {
+            return null;
         }
         
         switch ($usuario->getTipo()){
@@ -35,7 +38,7 @@ class CriarUsuarioDAO{
                 break;
             default:
                 echo "Não é um tipo conhecido";
-                return UsuarioDAO();
+                return null;
         }
     }
 }
