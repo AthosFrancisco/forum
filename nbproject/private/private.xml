@@ -3,9 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/forum/DAO/NovoUsuario.php</file>
-            <file>file:/C:/xampp/htdocs/forum/model/Usuario.php</file>
-            <file>file:/C:/xampp/htdocs/forum/usuarionovo.php</file>
+            <file>file:/C:/xampp/htdocs/forum/login.php</file>
+            <file>file:/C:/xampp/htdocs/forum/DAO/CriarUsuarioDAO.php</file>
+            <file>file:/C:/xampp/htdocs/forum/index.php</file>
         </group>
     </open-files>
 </project-private>
