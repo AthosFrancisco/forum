@@ -3,7 +3,7 @@
 require_once 'Conexao.php';
 require_once 'model/Usuario.php';
 
-abstract class UsuarioDAO {
+abstract class UsuarioDAO{
     
     protected $usuario;
     

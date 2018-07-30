@@ -23,7 +23,9 @@
                 echo "Usuário ou senha incorreto";
             }else{
                 session_start();
-                $_SESSION["usuario"] = $usuarioDAO;
+                $_SESSION['usuario'] = serialize($usuarioDAO);
+                //print_r($usuarioDAO);
+                //print_r(unserialize($_SESSION['usuario']));
                 header("Location: index.php");
             }
         }

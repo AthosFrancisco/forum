@@ -7,10 +7,11 @@
     <body>
         <h1>Bem vindo!
         <?php
+            require_once 'DAO/UsuarioDAO.php';
             session_start();
-            $usuario = $_SESSION["usuario"];
-            
-            print_r($usuario->getUsuario());
+            $usuario = unserialize($_SESSION['usuario']);
+            var_dump($_SESSION);
+            echo $usuario->getUsuario();
         ?>
         </h1>
     </body>
