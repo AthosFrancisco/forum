@@ -1,7 +1,3 @@
 <?php
-
-require_once 'model/Usuario.php';
-
-$usuario = new Usuario(1, "Athos", "athos", "", "Oi");
-
-print_r($usuario);
+date_default_timezone_set('America/Sao_Paulo');
+echo date("Y-m-d H:i:s");

@@ -14,14 +14,6 @@ class Moderador extends UsuarioDAO{
         
     }
 
-    public function criarPergunta(\Pergunta $pergunta) {
-        
-    }
-
-    public function criarResposta(\Resposta $resposta) {
-        
-    }
-
     public function listarPerguntas() {
         
     }
@@ -31,6 +23,14 @@ class Moderador extends UsuarioDAO{
     }
 
     public function listarRespostas() {
+        
+    }
+
+    public function criarPergunta(string $titulo, string $corpo) {
+        
+    }
+
+    public function criarResposta(string $resposta) {
         
     }
 

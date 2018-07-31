@@ -1,3 +1,7 @@
+<?php
+include 'autoload.php';
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,13 +9,14 @@
         <title></title>
     </head>
     <body>
+        <a href="criarpergunta.php">Fazer Pergunta</a>
+        
         <h1>Bem vindo!
         <?php
-            require_once 'DAO/UsuarioDAO.php';
+            include 'DAO/UsuarioDAO.php';
             session_start();
-            $usuario = unserialize($_SESSION['usuario']);
-            var_dump($_SESSION);
-            echo $usuario->getUsuario();
+            $usuario = $_SESSION['usuario'];
+            echo $usuario->getUsuario()->getNome();
         ?>
         </h1>
     </body>

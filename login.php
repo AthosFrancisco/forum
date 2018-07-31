@@ -1,35 +1,35 @@
 <?php
-    
-    require_once 'DAO/CriarUsuarioDAO.php';
-    
-    if(isset($_POST['login']) && isset($_POST['senha'])){
-        $algumVazio = false;
-        
-        if(empty($_POST['login']) == true){
-            echo '<span style="color: red;">Falta o login</span>';
-            $algumVazio = true;
-        }
-        if(empty($_POST['senha']) == true){
-            echo '<span style="color: red;">Falta a senha</span>';
-            $algumVazio = true;
-        }
-        
-        if(!$algumVazio){
-            $login = addslashes($_POST['login']);
-            $senha = addslashes($_POST['senha']);
-            $usuarioDAO = CriarUsuarioDao::getUsuarioDAO($login, $senha);
-            
-            if($usuarioDAO == null){
-                echo "Usuário ou senha incorreto";
-            }else{
-                session_start();
-                $_SESSION['usuario'] = serialize($usuarioDAO);
-                //print_r($usuarioDAO);
-                //print_r(unserialize($_SESSION['usuario']));
-                header("Location: index.php");
-            }
+require_once 'DAO/CriarUsuarioDAO.php';
+
+if (isset($_POST['login']) && isset($_POST['senha'])) {
+    $algumVazio = false;
+
+    if (empty($_POST['login']) == true) {
+        echo '<span style="color: red;">Falta o login</span>';
+        $algumVazio = true;
+    }
+    if (empty($_POST['senha']) == true) {
+        echo '<span style="color: red;">Falta a senha</span>';
+        $algumVazio = true;
+    }
+
+    if (!$algumVazio) {
+        $login = addslashes($_POST['login']);
+        $senha = addslashes($_POST['senha']);
+        $usuarioDAO = CriarUsuarioDao::getUsuarioDAO($login, $senha);
+
+        if ($usuarioDAO == null) {
+            echo "Usuário ou senha incorreto";
+        } else {
+
+            session_start();
+            $_SESSION['usuario'] = $usuarioDAO;
+            //print_r($usuarioDAO);
+            //print_r(unserialize($_SESSION['usuario']));
+            header("Location: index.php");
         }
     }
+}
 ?>
 <!DOCTYPE html>
 <html>

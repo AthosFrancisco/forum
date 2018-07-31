@@ -6,19 +6,25 @@ require_once 'model/Usuario.php';
 abstract class UsuarioDAO{
     
     protected $usuario;
-    
+    protected $pdo;
+
+
     public function __construct($usuario) {
         $this->usuario = $usuario;
     }
 
     
-    public function getUsuario(){
+    public function getUsuario(): Usuario{
         return $this->usuario;
     }
+    public function getPdo(){
+        $this->pdo = Conexao::getConexao();
+        return $this->pdo;
+    }
 
-    public abstract function criarPergunta(Pergunta $pergunta);
+    public abstract function criarPergunta(string $titulo, string $corpo);
     
-    public abstract function criarResposta(Resposta $resposta);
+    public abstract function criarResposta(string $resposta);
     
     public abstract function apagarPergunta(int $idPergunta);
     
