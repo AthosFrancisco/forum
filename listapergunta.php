@@ -1,8 +1,6 @@
 <?php
-include_once 'autoload.php';
+include 'usuarioSessao.php';
 include_once 'model/Pergunta.php';
-
-session_start();
 
 $usuario = $_SESSION['usuario'];
 ?>

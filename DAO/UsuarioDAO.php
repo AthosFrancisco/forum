@@ -26,11 +26,13 @@ abstract class UsuarioDAO{
 
     public abstract function criarPergunta(string $titulo, string $corpo);
     
-    public abstract function criarResposta(string $resposta);
+    public abstract function criarResposta(string $resposta, $idPergunta);
     
     public abstract function apagarPergunta(int $idPergunta);
     
     public abstract function apagarResposta(int $idResposta);
+    
+    public abstract function pergunta($idPergunta): Pergunta;
     
     public abstract function listarPerguntas(): ArrayObject;
     

@@ -1,12 +1,13 @@
 <?php
 
-class Comum extends UsuarioDAO{
+include_once 'Deslogado.php';
+
+class Comum extends Deslogado{
     
     public function Comum($usuario) {
         parent::__construct($usuario);
     }
 
-    
     public function apagarPergunta(int $idPergunta) {
         
         $this->getPdo();
@@ -64,12 +65,12 @@ class Comum extends UsuarioDAO{
         $this->pdo = null;
     }
 
-    public function criarResposta(string $resposta) {
+    public function criarResposta(string $resposta, $idPergunta) {
         $this->getPdo();
         
         $idAutor = $this->usuario->getId();
-        $idPergunta = $resposta->getIdPergunta();
-        $corpo = $resposta->getCorpo();
+        $idPergunta = $idPergunta;
+        $corpo = $resposta;
         
         date_default_timezone_set('America/Sao_Paulo');
         $dataPostagem = date("Y-m-d H:i:s");
@@ -80,11 +81,13 @@ class Comum extends UsuarioDAO{
         $this->pdo = null;
     }
 
-    public function listarPerguntas(): ArrayObject{
+    public function listarPerguntasProprias(): ArrayObject {
         
         $this->getPdo();
         
-        $sql = "SELECT * FROM pergunta";
+        $idAutor = $this->usuario->getId();
+        
+        $sql = "SELECT * FROM pergunta WHERE id_autor = $idAutor;";
         $sql = $this->pdo->query($sql);
         
         $lista = new ArrayObject();
@@ -108,61 +111,4 @@ class Comum extends UsuarioDAO{
         return $lista;
     }
 
-    public function listarPerguntasProprias(): ArrayObject {
-        
-        $this->getPdo();
-        
-        $idAutor = $this->usuario->getId();
-        
-        $sql = "SELECT * FROM pergunta WHERE id_autor = $idAutor;";
-        $sql = $this->pdo->query($sql);
-        
-        $lista = new ArrayObject();
-        
-        if($sql->rowCount() > 0){
-            $sql = $sql->fetchAll();
-            
-            foreach ($sql as $p){
-                $pergunta = new Pergunta();
-                $pergunta->setId($p['id']);
-                $pergunta->setIdAutor($p['id_autor']);
-                $pergunta->setTitulo($p['titulo']);
-                $pergunta->setCorpo($p['corpo']);
-                $pergunta->getDataPostagem($p['data_postagem']);
-                
-                $lista->append($pergunta);
-            }
-        }
-        
-        $this->pdo = null;
-        return $lista;
-    }
-
-    public function listarRespostas($idPergunta): ArrayObject{
-        
-        $this->getPdo();
-        
-        $sql = "SELECT * FROM resposta WHERE id_autor = $idPergunta;";
-        $sql = $this->pdo->query($sql);
-        
-        $lista = new ArrayObject();
-        
-        if($sql->rowCount() > 0){
-            $sql = $sql->fetchAll();
-            
-            foreach ($sql as $r){
-                $resposta = new Resposta();
-                $resposta->setId($r['id']);
-                $resposta->setIdAutor($r['id_autor']);
-                $resposta->setIdPergunta($r['id_pergunta']);
-                $resposta->setCorpo($r['corpo']);
-                $resposta->getDataPostagem($r['data_postagem']);
-                
-                $lista->append($resposta);
-            }
-        }
-        
-        $this->pdo = null;
-        return $lista;
-    }
 }

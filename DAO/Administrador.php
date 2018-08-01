@@ -30,7 +30,11 @@ class Administrador extends UsuarioDAO{
         
     }
 
-    public function criarResposta(string $resposta) {
+    public function criarResposta(string $resposta, $idPergunta) {
+        
+    }
+
+    public function pergunta($idPergunta): \Pergunta {
         
     }
 

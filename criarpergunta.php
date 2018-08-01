@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php
-include 'autoload.php';
-include_once 'DAO/UsuarioDAO.php';
+include 'usuarioSessao.php';
 
 session_start();
 $usuario = $_SESSION['usuario'];

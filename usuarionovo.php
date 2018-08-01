@@ -1,30 +1,29 @@
 <?php
-    require_once 'DAO/NovoUsuario.php';
-    
-    if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha'])){
-        $algumVazio = false;
-        
-        if(empty($_POST['nome']) == true){
-            echo '<span style="color: red;">Falta o nome</span>';
-            $algumVazio = true;
-        }
-        if(empty($_POST['email']) == true){
-            echo '<span style="color: red;">Falta o E-mail</span>';
-            $algumVazio = true;
-        }
-        if(empty($_POST['senha']) == true){
-            echo '<span style="color: red;">Falta a senha</span>';
-            $algumVazio = true;
-        }
-        
-        if(!$algumVazio){
-            $nome = addslashes($_POST['nome']);
-            $email = addslashes($_POST['email']);
-            $senha = addslashes($_POST['senha']);
-            $usuario = NovoUsuario::novo($nome, $email, $senha);
-            
-        }
+require_once 'DAO/NovoUsuario.php';
+
+if (isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha'])) {
+    $algumVazio = false;
+
+    if (empty($_POST['nome']) == true) {
+        echo '<span style="color: red;">Falta o nome</span>';
+        $algumVazio = true;
     }
+    if (empty($_POST['email']) == true) {
+        echo '<span style="color: red;">Falta o E-mail</span>';
+        $algumVazio = true;
+    }
+    if (empty($_POST['senha']) == true) {
+        echo '<span style="color: red;">Falta a senha</span>';
+        $algumVazio = true;
+    }
+
+    if (!$algumVazio) {
+        $nome = addslashes($_POST['nome']);
+        $email = addslashes($_POST['email']);
+        $senha = addslashes($_POST['senha']);
+        $usuario = NovoUsuario::novo($nome, $email, $senha);
+    }
+}
 ?>
 
 <html lang="pt-br">

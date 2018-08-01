@@ -1,5 +1,5 @@
 <?php
-include 'autoload.php';
+include 'usuarioSessao.php';
 ?>
 
 <!DOCTYPE html>
@@ -14,8 +14,6 @@ include 'autoload.php';
         
         <h1>Bem vindo!
         <?php
-            include 'DAO/UsuarioDAO.php';
-            session_start();
             $usuario = $_SESSION['usuario'];
             echo $usuario->getUsuario()->getNome();
         ?>
