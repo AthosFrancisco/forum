@@ -10,6 +10,7 @@ include 'autoload.php';
     </head>
     <body>
         <a href="criarpergunta.php">Fazer Pergunta</a>
+        <a href="listapergunta.php">Listar Perguntas</a>
         
         <h1>Bem vindo!
         <?php

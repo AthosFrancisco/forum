@@ -14,15 +14,15 @@ class Moderador extends UsuarioDAO{
         
     }
 
-    public function listarPerguntas() {
+    public function listarPerguntas(): ArrayObject {
         
     }
 
-    public function listarPerguntasProprias() {
+    public function listarPerguntasProprias(): ArrayObject {
         
     }
 
-    public function listarRespostas() {
+    public function listarRespostas($idPergunta): ArrayObject {
         
     }
 

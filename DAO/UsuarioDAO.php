@@ -2,6 +2,8 @@
 
 require_once 'Conexao.php';
 require_once 'model/Usuario.php';
+require_once 'model/Pergunta.php';
+require_once 'model/Resposta.php';
 
 abstract class UsuarioDAO{
     
@@ -30,9 +32,9 @@ abstract class UsuarioDAO{
     
     public abstract function apagarResposta(int $idResposta);
     
-    public abstract function listarPerguntas();
+    public abstract function listarPerguntas(): ArrayObject;
     
-    public abstract function listarRespostas();
+    public abstract function listarRespostas($idPergunta): ArrayObject;
     
-    public abstract function listarPerguntasProprias();
+    public abstract function listarPerguntasProprias(): ArrayObject;
 }
