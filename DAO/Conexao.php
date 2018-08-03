@@ -7,8 +7,6 @@ class Conexao {
         $dbUsuario = "root";
         $dbSenha = "";
 
-        $pdo;
-
         try {
             $pdo = new PDO($dsn, $dbUsuario, $dbSenha);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
