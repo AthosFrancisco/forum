@@ -1,5 +1,7 @@
 <?php
+include 'usuarioSessao.php';
 require_once 'DAO/NovoUsuario.php';
+require_once 'DAO/CriarUsuarioDAO.php';
 
 if (isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha'])) {
     $algumVazio = false;
@@ -21,7 +23,31 @@ if (isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha'])) {
         $nome = addslashes($_POST['nome']);
         $email = addslashes($_POST['email']);
         $senha = addslashes($_POST['senha']);
-        $usuario = NovoUsuario::novo($nome, $email, $senha);
+        NovoUsuario::novo($nome, $email, $senha);
+        
+        $usuarioDAO = CriarUsuarioDao::getUsuarioDAO($email, $senha);
+
+        //////////////////////////////////////////////////
+        $arquivo = $_FILES['foto'];
+
+	print_r($arquivo);
+
+	if(isset($arquivo['tmp_name']) && !empty($arquivo['tmp_name'])){
+
+		$nomeDoArquivo = $usuarioDAO->getUsuario()->getId();
+		move_uploaded_file($arquivo['tmp_name'], 'fotos/'.$nomeDoArquivo);
+
+		echo 'arquivo enviado com sucesso '.$nomeDoArquivo;
+	}
+        ///////////////////////////////////////////
+        
+        if ($usuarioDAO == null) {
+        } else {
+
+            session_start();
+            $_SESSION['usuario'] = $usuarioDAO;
+            //header("Location: index.php");
+        }
     }
 }
 ?>
@@ -33,7 +59,7 @@ if (isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha'])) {
     </head>
     <body>
         <h1>Cadastro</h1>
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
             <table>
                 <tr>
                     <td><label for="nome">Nome:</label></td>
@@ -46,6 +72,10 @@ if (isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha'])) {
                 <tr>
                     <td><label for="senha">Senha:</label></td>
                     <td><input type="password" id="senha" name="senha" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="file" name="foto" /></td>
                 </tr>
                 <tr>
                     <td></td>

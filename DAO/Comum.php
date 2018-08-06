@@ -12,15 +12,15 @@ class Comum extends Deslogado{
         
         $this->getPdo();
         
-        $sql = "SELECT id_autor FROM pergunta WHERE id = '$idPergunta';";
+        $sql = "SELECT * FROM pergunta WHERE id = '$idPergunta';";
         $sql = $this->pdo->query($sql);
         
         if($sql->rowCount() > 0){
             $idAutor = $sql->fetch()['id_autor'];
         }
         
-        if($idAutor == $usuario->getId()){
-            $sql = "DELETE FROM usuario WHERE id = '$idPergunta'";
+        if($idAutor == $this->usuario->getId()){
+            $sql = "DELETE FROM resposta WHERE id_pergunta = '$idPergunta'; DELETE FROM pergunta WHERE id = '$idPergunta'";
             $this->pdo->query($sql);
         }else{
             echo 'Você não é o proprietário desta pergunta';

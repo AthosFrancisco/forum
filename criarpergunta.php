@@ -2,7 +2,6 @@
 <?php
 include 'usuarioSessao.php';
 
-session_start();
 $usuario = $_SESSION['usuario'];
 
 if (isset($_POST['titulo']) && isset($_POST['corpo'])) {

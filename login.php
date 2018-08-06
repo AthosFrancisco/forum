@@ -38,6 +38,7 @@ if (isset($_POST['login']) && isset($_POST['senha'])) {
         <title></title>
     </head>
     <body>
+        <a href="usuarionovo.php">Criar Usuario</a>
         <h1>Login</h1>
         <form method="POST">
             <table>

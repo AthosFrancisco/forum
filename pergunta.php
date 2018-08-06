@@ -30,6 +30,10 @@ $listaResposta = $usuario->listarRespostas($idPergunta);
         foreach ($listaResposta as $r) {
             echo '<div>' . $r->getDataPostagem() . '</div>';
             echo '<div>' . $r->getCorpo() . '</div>';
+            if($r->getIdAutor() == $usuario->getUsuario()->getId()){
+                echo '<a href="editarresposta.php?idResposta='.$r->getId().'&idPergunta='.$idPergunta.'">editar</a>';
+                echo '<a href="excluirresposta.php?idResposta='.$r->getId().'&idPergunta='.$idPergunta.'">excluir</a>';
+            }
             echo '<br/><br/>';
         }
         ?>
